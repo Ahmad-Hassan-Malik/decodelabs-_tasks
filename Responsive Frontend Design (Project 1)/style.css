@@ -1,0 +1,216 @@
+/* --- Root Variables & Reset --- */
+:root {
+    --mocha: #A5856F;
+    --ethereal-blue: #A0D4E0;
+    --moonlit-grey: #F2F0EA;
+    --dark-text: #333;
+    
+    /* Fluid Typography using clamp() as requested */
+    --h1-size: clamp(2rem, 5vw, 3.5rem);
+    --body-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--moonlit-grey);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--mocha);
+}
+
+/* --- Navigation (Flexbox) --- */
+header {
+    background: white;
+    padding: 1rem 5%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo span { color: var(--ethereal-blue); }
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--mocha);
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--ethereal-blue); }
+
+.btn-primary {
+    background: var(--mocha);
+    color: white !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+}
+
+/* --- Mobile Menu Toggle --- */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--mocha);
+}
+
+/* --- Main Layout (Mobile First - Single Column) --- */
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.hero h1 {
+    font-size: var(--h1-size);
+    margin-bottom: 1rem;
+}
+
+.btn-secondary {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background: var(--ethereal-blue);
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* --- Content Grid (Flexbox for items) --- */
+.content-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-left: 5px solid var(--ethereal-blue);
+    transition: transform 0.3s;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+/* --- Side Panel --- */
+.side-panel {
+    background: #fff;
+    padding: 2rem;
+    border: 1px solid #ddd;
+}
+
+.vibe-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--moonlit-grey);
+    border: 1px dashed var(--mocha);
+}
+
+/* --- Footer --- */
+footer {
+    background: white;
+    padding: 2rem 5%;
+    margin-top: 4rem;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+.terminal-metadata {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 10px;
+}
+
+/* --- Media Queries (Tablet & Desktop) --- */
+
+/* Tablet: 768px */
+@media (min-width: 768px) {
+    .content-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .card { flex: 1 1 calc(50% - 1rem); }
+}
+
+/* Desktop: 1024px */
+@media (min-width: 1024px) {
+    .menu-toggle { display: none; }
+    
+    .main-layout {
+        grid-template-columns: 2.5fr 1fr; /* Macro Layout - Strict 2D floorplan */
+        grid-template-areas: 
+            "hero hero"
+            "content side";
+    }
+    
+    .hero { grid-area: hero; }
+    .content-grid { 
+        grid-area: content;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .side-panel { grid-area: side; }
+}
+
+/* Mobile Nav Logic */
+@media (max-width: 767px) {
+    .menu-toggle { display: flex; }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    }
+    .nav-links.active { display: flex; }
+}
