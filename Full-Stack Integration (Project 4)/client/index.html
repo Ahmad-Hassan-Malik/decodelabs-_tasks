@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unified System | Project 4</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Full-Stack Integration</h1>
+            <p>Architecting the Bridge between UI and Logic</p>
+        </header>
+
+        <section class="vault-input">
+            <form id="userForm">
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="number" id="age" placeholder="Age" required>
+                <button type="submit" id="submitBtn">Deploy to Vault</button>
+            </form>
+        </section>
+
+        <div id="loading" class="status-msg" style="display:none;">Syncing with Nerves...</div>
+
+        <section id="userList" class="data-grid">
+            <!-- Dynamic Injection happens here -->
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

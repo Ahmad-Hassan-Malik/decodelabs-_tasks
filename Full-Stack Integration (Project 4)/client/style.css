@@ -1,0 +1,18 @@
+:root {
+    --mocha: #A5856F;
+    --ethereal-blue: #A0D4E0;
+    --bg-grey: #F2F0EA;
+}
+
+body { font-family: 'Roboto', sans-serif; background: var(--bg-grey); padding: 40px; color: #333; }
+.app-container { max-width: 700px; margin: auto; text-align: center; }
+h1 { color: var(--mocha); font-family: 'Montserrat'; text-transform: uppercase; letter-spacing: 2px; }
+
+.vault-input { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); margin-bottom: 30px; }
+form { display: flex; flex-direction: column; gap: 15px; }
+input { padding: 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 1rem; }
+button { background: var(--mocha); color: white; border: none; padding: 15px; cursor: pointer; font-weight: bold; border-radius: 6px; transition: 0.3s; }
+button:hover { background: #8e6f5a; }
+
+.user-card { background: white; padding: 20px; border-radius: 8px; margin: 15px 0; border-left: 6px solid var(--ethereal-blue); text-align: left; }
+.status-msg { margin: 20px; font-weight: bold; color: var(--mocha); }
